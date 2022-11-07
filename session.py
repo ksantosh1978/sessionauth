@@ -14,7 +14,7 @@ import boto3
 
 
 #def updatedata():
-workbook = load_workbook(filename="/home/ec2-user/mockauth/MockSession.xlsx")
+workbook = load_workbook(filename="/usr/share/mockauth/MockSession.xlsx")
 sheet = workbook.active
 rowcnt=sheet.max_row
 
@@ -36,12 +36,12 @@ for x in range(1,rowcnt):
      sheet["O"+str(x + 1)] = reauth
      sheet["S"+str(x+1)] = str(session_id).strip()
 
-workbook.save(filename="/home/ec2-user/mockauth/MockSession.xlsx")
+workbook.save(filename="/usr/share/mockauth/MockSession.xlsx")
 #Convert Excel to CSV
-data=pd.read_excel("/home/ec2-user/mockauth/MockSession.xlsx",sheet_name='Sheet1',dtype=str,index_col=None)
-data.to_csv("/home/ec2-user/mockauth/sessiondata.csv",encoding='utf-8',index=False,header=False,line_terminator=None)
-data1=pd.read_excel("/home/ec2-user/mockauth/MockSession.xlsx",sheet_name='Sheet1',usecols=['session_token','csrf_token'])
-data1.to_csv("/home/ec2-user/mockauth/sessions.csv",encoding='utf-8',index=False,header=True,line_terminator=None)
+data=pd.read_excel("/usr/share/mockauth/MockSession.xlsx",sheet_name='Sheet1',dtype=str,index_col=None)
+data.to_csv("/usr/share/mockauth/sessiondata.csv",encoding='utf-8',index=False,header=False,line_terminator=None)
+data1=pd.read_excel("/usr/share/mockauth/MockSession.xlsx",sheet_name='Sheet1',usecols=['session_token','csrf_token'])
+data1.to_csv("/usr/share/mockauth/sessions.csv",encoding='utf-8',index=False,header=True,line_terminator=None)
 print("Number of Session Updated in Sheet-"+str(rowcnt))
 
 session=boto3.Session(profile_name='cim-preprod-developer')
