@@ -43,7 +43,7 @@ data.to_csv("/usr/share/mockauth/sessiondata.csv",encoding='utf-8',index=False,h
 data1=pd.read_excel("/usr/share/mockauth/MockSession.xlsx",sheet_name='Sheet1',usecols=['session_token','csrf_token'])
 data1.to_csv("/usr/share/mockauth/sessions.csv",encoding='utf-8',index=False,header=True,line_terminator=None)
 print("Number of Session Updated in Sheet-"+str(rowcnt))
-
+print(boto3.Session())
 session=boto3.Session(profile_name='cim-preprod-developer')
 s3 = session.client('s3')
 s3.upload_file(
