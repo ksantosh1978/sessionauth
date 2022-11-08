@@ -47,7 +47,7 @@ print("Number of Session Updated in Sheet-"+str(rowcnt))
 session=boto3.Session(profile_name='cim-preprod-developer')
 s3 = session.client('s3')
 s3.upload_file(
-     Filename="/home/ec2-user/mockauth/sessiondata.csv",
+     Filename="/usr/share/mockauth/sessiondata.csv",
      Bucket="mocksessionbuc",
      Key="sessiondata.csv",
 )
